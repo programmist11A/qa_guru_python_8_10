@@ -1,29 +1,29 @@
-import os
+from home_8_10.page.reg_page import RegistrationPage
 
-from selene import browser, have
+registration_page = RegistrationPage()
 
 
-def test_web():
-    browser.open('/automation-practice-form')
-    browser.element('#firstName').type('Anton')
-    browser.element('#lastName').type('Fomin')
-    browser.element('#userEmail').type('catman@mail.ru')
-    browser.element('[for="gender-radio-3"]').click()
-    browser.element('#userNumber').type('9694840725')
-    browser.element('#dateOfBirthInput').click()
-    browser.element(".react-datepicker__month-select").click().element('option[value="1"]').click()
-    browser.element(".react-datepicker__year-select").click().element('[value="1989"]').click()
-    browser.element(".react-datepicker__day--019").click()
-    browser.element('#subjectsInput').type('Computer Science').press_enter()
-    browser.element('[for="hobbies-checkbox-1"]').click()
-    browser.element('[for="hobbies-checkbox-2"]').click()
-    browser.element('#uploadPicture').send_keys(os.path.abspath('picture/sun.jpg'))
-    browser.element('#currentAddress').type('Krasnodar')
-    browser.element('#react-select-3-input').type('NCR').click().press_enter()
-    browser.element('#react-select-4-input').type('Delhi').click().press_enter()
-    browser.element("#submit").press_enter()
-    browser.element('#example-modal-sizes-title-lg').should(have.text("Thanks for submitting the form"))
-    browser.element('.table').all('tr td:nth-child(2)').should(have.texts(
+def test_student_registration_form():
+    # GIVEN
+    registration_page.open()
+
+    # WHEN
+    registration_page.fill_first_name('Anton')
+    registration_page.fill_last_name('Fomin')
+    registration_page.fill_email('catman@mail.ru')
+    registration_page.choose_a_gender()
+    registration_page.fill_telephone_number('9694840725')
+    registration_page.choose_date_of_birth(month='2', year='89', day='019')
+    registration_page.choose_a_subject('Computer Science')
+    registration_page.choose_a_hobby()
+    registration_page.upload_a_picture('sun.png')
+    registration_page.type_current_address('Krasnodar')
+    registration_page.choose_state('NCR')
+    registration_page.choose_city('Delhi')
+    registration_page.submit_form()
+
+    # THEN
+    registration_page.student_should_by_reg(
         'Anton Fomin',
         'catman@mail.ru',
         'Other',
@@ -33,5 +33,4 @@ def test_web():
         'Sports, Reading',
         'sun.jpg',
         'Krasnodar',
-        'NCR Delhi'))
-
+        'NCR Delhi')

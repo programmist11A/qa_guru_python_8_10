@@ -16,7 +16,7 @@ def test_student_registration_form():
     registration_page.choose_date_of_birth(month='2', year='89', day='019')
     registration_page.choose_a_subject('Computer Science')
     registration_page.choose_a_hobby()
-    registration_page.upload_a_picture('sun.png')
+    registration_page.add_picture('sun.png')
     registration_page.type_current_address('Krasnodar')
     registration_page.choose_state('NCR')
     registration_page.choose_city('Delhi')

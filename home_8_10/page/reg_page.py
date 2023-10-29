@@ -1,5 +1,6 @@
 from selene import browser, be, have
-from home_8_10 import resource
+import os.path
+import home_8_10
 
 
 class RegistrationPage:
@@ -36,8 +37,11 @@ class RegistrationPage:
         browser.element('label[for=hobbies-checkbox-1]').should(be.visible).click()
         browser.element('label[for=hobbies-checkbox-2]').should(be.visible).click()
 
-    def upload_a_picture(self, value):
-        browser.element('#uploadPicture').should(be.visible).type(resource.path(value))
+    def add_picture(self, file_name):
+        browser.element('#uploadPicture').send_keys(
+            os.path.abspath(
+                os.path.join(os.path.dirname(home_8_10.__file__), f'picture/{file_name}')))
+
 
     def type_current_address(self, value):
         browser.element('#currentAddress').should(be.visible).type(value)

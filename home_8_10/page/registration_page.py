@@ -22,13 +22,11 @@ class RegistrationPage:
     def fill_telephone_number(self, value):
         browser.element('#userNumber').should(be.visible).type(value)
 
-    def choose_date_of_birth(self, month, year, day):
-        browser.element('#dateOfBirthInput').should(be.visible).click()
-        browser.element('.react-datepicker__month-select').should(be.visible).click()
-        browser.element(f'.react-datepicker__month-select > option:nth-child({month})').should(be.visible).click()
-        browser.element('.react-datepicker__year-select').should(be.visible).click()
-        browser.element(f'.react-datepicker__year-select > option:nth-child({year})').should(be.visible).click()
-        browser.element(f'.react-datepicker__day.react-datepicker__day--{day}').should(be.visible).click()
+    def choose_date_of_birth(self, year, month, day):
+        browser.element('#dateOfBirthInput').click()
+        browser.element('.react-datepicker__year-select').click().element(f'option[value="{year}"]').click()
+        browser.element('.react-datepicker__month-select').click().element(f'option[value="{month}"]').click()
+        browser.element(f'.react-datepicker__day--0{day}').click()
 
     def choose_a_subject(self, value):
         browser.element('#subjectsInput').should(be.visible).type(value).press_enter()
@@ -51,7 +49,7 @@ class RegistrationPage:
         browser.element("#react-select-4-input").should(be.visible).type(value).press_enter()
 
     def submit_form(self):
-        browser.element("#submit").should(be.visible).click()
+        browser.element("#submit").press_enter()
 
     def student_should_by_reg(self, full_name, email, gender, number, date_of_birth,
                                           subjects, hobbies, picture, current_address, state_and_city):

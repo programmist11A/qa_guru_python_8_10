@@ -35,4 +35,3 @@ def test_web():
         'Krasnodar',
         'NCR Delhi'))
 
-

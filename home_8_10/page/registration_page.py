@@ -53,18 +53,19 @@ class RegistrationPage:
     def submit_form(self):
         browser.element("#submit").should(be.visible).click()
 
-    def student_should_by_reg(self, full_name, email, gender, phone_number, date_of_birth, subject, hobby,
-                              picture, state, city):
+    def student_should_by_reg(self, full_name, email, gender, number, date_of_birth,
+                                          subjects, hobbies, picture, current_address, state_and_city):
         browser.element('.table').all('td').even.should(
             have.exact_texts(
                 full_name,
                 email,
                 gender,
-                phone_number,
+                number,
                 date_of_birth,
-                subject,
-                hobby,
+                subjects,
+                hobbies,
                 picture,
-                state,
-                city
-            ))
+                current_address,
+                state_and_city
+            )
+        )

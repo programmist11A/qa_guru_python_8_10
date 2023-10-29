@@ -13,7 +13,7 @@ def test_student_registration_form():
     registration_page.fill_email('catman@mail.ru')
     registration_page.choose_a_gender()
     registration_page.fill_telephone_number('9694840725')
-    registration_page.choose_date_of_birth(month='2', year='89', day='019')
+    registration_page.choose_date_of_birth(month='2', year='90', day='019')
     registration_page.choose_a_subject('Computer Science')
     registration_page.choose_a_hobby()
     registration_page.add_picture('sun.jpg')

@@ -17,7 +17,7 @@ def test_web():
     browser.element('#subjectsInput').type('Computer Science').press_enter()
     browser.element('[for="hobbies-checkbox-1"]').click()
     browser.element('[for="hobbies-checkbox-2"]').click()
-    browser.element('#uploadPicture').send_keys(os.path.abspath('picture 1/sun.jpg'))
+    browser.element('#uploadPicture').send_keys(os.path.abspath('picture/sun.jpg'))
     browser.element('#currentAddress').type('Krasnodar')
     browser.element('#react-select-3-input').type('NCR').click().press_enter()
     browser.element('#react-select-4-input').type('Delhi').click().press_enter()

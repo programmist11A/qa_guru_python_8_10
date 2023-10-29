@@ -42,7 +42,6 @@ class RegistrationPage:
             os.path.abspath(
                 os.path.join(os.path.dirname(home_8_10.__file__), f'picture/{file_name}')))
 
-
     def type_current_address(self, value):
         browser.element('#currentAddress').should(be.visible).type(value)
 
@@ -59,14 +58,14 @@ class RegistrationPage:
                               picture, state, city):
         browser.element('.table').all('td').even.should(
             have.exact_texts(
-            full_name,
-            email,
-            gender,
-            phone_number,
-            date_of_birth,
-            subject,
-            hobby,
-            picture,
-            state,
-            city
-        ))
+                full_name,
+                email,
+                gender,
+                phone_number,
+                date_of_birth,
+                subject,
+                hobby,
+                picture,
+                state,
+                city
+            ))

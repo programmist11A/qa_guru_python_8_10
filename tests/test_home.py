@@ -1,4 +1,4 @@
-from home_8_10.page.reg_page import RegistrationPage
+from home_8_10.page.registration_page import RegistrationPage
 
 registration_page = RegistrationPage()
 

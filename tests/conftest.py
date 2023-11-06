@@ -10,3 +10,4 @@ def browser_manager():
 
     yield browser
     browser.quit()
+

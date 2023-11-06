@@ -1,13 +1,15 @@
 from home_8_10.page.registration_page import RegistrationPage
 from home_8_10.data.users import User
-
+import allure
 
 registration_page = RegistrationPage()
 
 
 def test_student_registration_form():
-    # GIVEN
-    student = User(first_name='Anton',
+    with allure.step("Открыть страницу регистрации пользователей"):
+        registration_page.open()
+    with allure.step("Заполнить форму регистрации тестовыми данными"):
+        student = User(first_name='Anton',
                    last_name='Fomin',
                    email='catman@mail.ru',
                    gender='Other',
@@ -25,6 +27,5 @@ def test_student_registration_form():
 
     # WHEN
     registration_page.register(student)
-
-    # THEN
-    registration_page.student_should_by_registred(student)
+    with allure.step("Проверка, что пользователь зарегистрирован"):
+        registration_page.student_should_by_registred(student)
